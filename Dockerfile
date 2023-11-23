@@ -5,7 +5,8 @@ RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories
     apk add nginx bash
 ENV SERVER_DOMAIN="example.com" \
     SSL_CRT="/etc/xray/ssl/cert.pem" \
-    SSL_KEY="/etc/xray/ssl/cert.key" 
+    SSL_KEY="/etc/xray/ssl/cert.key" \
+    SERVER_PASSWD="troJanPass" 
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./config.json /etc/xray/config.json
 COPY ./start.sh /app/start.sh

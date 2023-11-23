@@ -12,3 +12,4 @@ services:
       - SERVER_DOMAIN=example.com
       - SSL_CRT=/etc/xray/ssl/cert.pem
       - SSL_KEY=/etc/xray/ssl/cert.key
+      - SERVER_PASSWD=troJanPass
