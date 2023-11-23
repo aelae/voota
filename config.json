@@ -1,0 +1,52 @@
+{
+    "log": {
+        "loglevel": "debug"
+    },
+    "inbounds": [
+        {
+            "port": 443,
+            "protocol": "trojan",
+            "settings": {
+                "clients": [
+                    {
+                        "password":"troJanPass"
+                    }
+                ],
+                "fallbacks": [
+                    {
+                        "dest": "/dev/shm/default.sock",
+                        "xver": 1
+                    },
+                    {
+                        "alpn": "h2",
+                        "dest": "/dev/shm/h2c.sock",
+                        "xver": 1
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "tls",
+                "tlsSettings": {
+                    "alpn": [
+                        "http/1.1",
+                        "h2"
+                    ],
+                    "certificates": [
+                        {
+                            "certificateFile": "<server_ssl_crt>",
+                            "keyFile": "<server_ssl_key>",
+                            "ocspStapling": 3600
+                        }
+                    ],
+                    "minVersion": "1.2"
+                }
+            }
+        }
+    ],
+    "outbounds": [
+        {
+            "protocol": "freedom"
+        }
+    ]
+}

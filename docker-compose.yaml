@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  nginx:
+    image: gotafire/voota:0.0.1
+    ports:
+      - "680:80"
+      - "6443:443"
+    volumes:
+      - ./data/ssl/:/etc/xray/ssl/
+    environment:
+      - SERVER_DOMAIN=example.com
+      - SSL_CRT=/etc/xray/ssl/cert.pem
+      - SSL_KEY=/etc/xray/ssl/cert.key
